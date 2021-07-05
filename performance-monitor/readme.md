@@ -9,16 +9,21 @@
 ### window.performance API
 
 ```js
-window.performance
+// 兼容 performance API
+var performance = window.performance || window.msPerformance || window.webkitPerformance
 ```
 
-可以拿到相应的数据
+可以拿到相应的数据：
 
 <img src="../imgs/img1.png" style="zoom:50%;" />
 
-- performance.memory：表示内存使用情况。
-- performance.navigation：表示是如何导航到这个页面的，以及重定向的次数。
-- performance.timing：统计了页面从网页开始导航到加载完成的一些时间点，通过计算某些特定事件的时间差，从而获取中间过程的耗时，就可以得出一些用于页面性能监控的指标。
+- performance.memory：内存相关，表示内存使用情况。
+- performance.navigation：来源相关，表示是如何导航到这个页面的，以及重定向的次数。
+- performance.timing：关键点时间，统计了页面从网页开始导航到加载完成的一些时间点，通过计算某些特定事件的时间差，从而获取中间过程的耗时，就可以得出一些用于页面性能监控的指标。
+- performance.onresourcetimingbufferfull：缓冲区满后回调函数
+- performance.timeOrigin：页面基准时间
+
+其中比较重要的是 performance.timing，关键点时间。
 
 
 
@@ -122,9 +127,24 @@ var performance = {
 
 <img src="../imgs/img2.png" style="zoom:50%;" />
 
+比较有用的页面性能数据大概包括如下几个，这些参数是通过上面的 performance.timing 各个属性的差值组成的，是精确到毫秒的一个值，计算方法如下：
+
+- 重定向耗时：redirectEnd - redirectStart
+- DNS 查询耗时 ：domainLookupEnd - domainLookupStart
+- TCP 链接耗时 ：connectEnd - connectStart
+- HTTP 请求耗时 ：responseEnd - responseStart
+- 解析 dom 树耗时 ：domComplete - domInteractive
+- 白屏时间 ：responseStart - navigationStart
+- DOMready 时间 ：domContentLoadedEventEnd - navigationStart
+- onload 时间：loadEventEnd - navigationStart，也即是 onload 回调函数执行的时间。
+
 
 
 ### 几个关键性能指标
+
+ <img src="../imgs/img11.png" style="zoom:50%;" />
+
+
 
 #### FP（First Paint）
 
@@ -318,3 +338,18 @@ getFID(console.log);
 #### TTFB（Time To First Byte）
 
 首字节时间。指网络请求被发起到接收到第一个字节的这段时间，其中包含了 TCP 连接时间、发送 HTTP 请求时间和获得响应消息第一个字节的时间。
+
+
+
+**如何获取 TTFB 时间：**
+
+- 通过 performance API 得到：
+
+  ```js
+  performance.timing.responseEnd - performance.timing.requestStart
+  ```
+
+- 单独某一个请求的 TTFB 可以通过 network 面板查看
+
+  <img src="../imgs/img12.png" style="zoom:38%;" />
+
