@@ -14,7 +14,7 @@ window.performance
 
 可以拿到相应的数据
 
-<img src="./imgs/img1.png" style="zoom:50%;" />
+<img src="../imgs/img1.png" style="zoom:50%;" />
 
 - performance.memory：表示内存使用情况。
 - performance.navigation：表示是如何导航到这个页面的，以及重定向的次数。
@@ -120,7 +120,7 @@ var performance = {
 
 下图是 整个 `timing` 的结构：
 
-<img src="./imgs/img2.png" style="zoom:50%;" />
+<img src="../imgs/img2.png" style="zoom:50%;" />
 
 
 
@@ -136,7 +136,7 @@ var performance = {
 
 可以直接通过 `performance.getEntriesByType('paint')` 方法获取到：
 
- <img src="./imgs/img4.png" style="zoom:67%;" />
+ <img src="../imgs/img4.png" style="zoom:67%;" />
 
 
 
@@ -152,7 +152,7 @@ FCP 最优的时间是 1s 以内。
 
 FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上开始发生变化，无论是什么内容触发的视觉变化，这一个时间点就叫做 FP。而 FCP 指的是浏览器首次绘制来自 DOM 的内容例如文本、图片等。所以 FP 和 FCP 可能是相同的时间，也可能是先 FP 后 FCP。
 
- <img src="./imgs/img3.png" style="zoom:38%;" />
+ <img src="../imgs/img3.png" style="zoom:38%;" />
 
 
 
@@ -160,7 +160,7 @@ FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上�
 
 - 可以直接通过 `performance.getEntriesByType('paint')` 方法获取到
 
-   <img src="./imgs/img4.png" style="zoom:67%;" />
+   <img src="../imgs/img4.png" style="zoom:67%;" />
 
 
 
@@ -168,7 +168,7 @@ FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上�
 
   web-vitals 提供了几个 API，可以度量一些指标，其中一个就可以度量 FCP
 
-   <img src="./imgs/img6.png" style="zoom:38%;" />
+   <img src="../imgs/img6.png" style="zoom:38%;" />
 
   ```js
   import {getFCP} from 'web-vitals';
@@ -183,7 +183,7 @@ FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上�
 
 - 还可以通过谷歌浏览器的 Lighthouse 查看：
 
-   <img src="./imgs/img5.png" style="zoom:38%;" />
+    <img src="../imgs/img5.png" style="zoom:38%;" />
 
 
 
@@ -213,7 +213,7 @@ FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上�
 
 - 或者使用 Lighthouse 面板获取。
 
-   <img src="./imgs/img10.png" style="zoom:38%;" />
+    <img src="../imgs/img10.png" style="zoom:38%;" />
 
 
 
@@ -240,7 +240,7 @@ FP 是当浏览器开始绘制内容到屏幕上的时候，只要在视觉上�
 
 - 或者使用 Lighthouse 面板获取。
 
-   <img src="./imgs/img9.png" style="zoom:38%;" />
+    <img src="../imgs/img9.png" style="zoom:38%;" />
 
 
 
@@ -279,7 +279,7 @@ getFID(console.log);
 
 可以通过 Lighthouse 面板获取
 
- <img src="./imgs/img7.png" style="zoom:38%;" />
+ <img src="../imgs/img7.png" style="zoom:38%;" />
 
 
 
@@ -311,7 +311,7 @@ getFID(console.log);
 
 - 可以通过 Lighthouse 面板获取
 
-   <img src="./imgs/img8.png" style="zoom:50%;" />
+    <img src="../imgs/img8.png" style="zoom:50%;" />
 
 
 
